@@ -1,13 +1,13 @@
 <template>
-  <input class="input-todo" v-on:click="addTodo" type="text">
+  <input class="input-todo" v-model="todoItem" type="text">
 </template>
 
 <script>
 export default {
-  methods : {
-    addTodo(){
-      console.log('aaa')
-    },
+  data: function(){
+    return {
+      todoItem : ""
+    }
   }
 }
 </script>
