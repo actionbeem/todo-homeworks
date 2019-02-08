@@ -1,6 +1,6 @@
 <template>
   <div class="input-wrap">
-    <input class="input-todo" v-model="todoItem" type="text" v-on:keyup.enter="addTodo">
+    <input class="input-todo" v-model="newTodoItem" type="text" v-on:keyup.enter="addTodo">
     <button v-on:click="addTodo">OK</button>
   </div>
 </template>
@@ -9,18 +9,18 @@
 export default {
   data: function(){
     return {
-      todoItem : ""
+      newTodoItem : ""
     }
   },
   methods: {
     addTodo: function(){
-      localStorage.setItem(this.todoItem, this.todoItem)
-      this.clearInput();
-
-      console.log()
+      if(this.newTodoItem !== ''){
+        this.$emit('addTodoItem', this.newTodoItem)
+        this.clearInput();
+      }
     },
     clearInput: function(){
-      this.todoItem = "";
+      this.newTodoItem = "";
     },
   }
 }
